@@ -8,6 +8,7 @@ package sentenceutils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import static java.lang.reflect.Array.getLength;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,22 +40,23 @@ public class SentenceUtils {
           i++;
       }
      
-        
+      
     }
     
     private void generateShingles() {
-        
-    int i = 0;
-    int k = 1;
-    Scanner scanner = new Scanner(sentence);
-    String sent = scanner.toString();
-    int j = sent.length(); 
+    
+    int k = 0;    
+    int i;
+    int j = sentence.length(); 
     shingles = new String[j];
+    for(i=0;i<j-1;i++){
+        shingles[k] = "" + sentence.charAt(i)+ "" + sentence.charAt(i+1);
+            k++;
+            }
     
     
     
     
-  
     }
     
     public void report() {
@@ -67,6 +69,12 @@ public class SentenceUtils {
             }
         }
         
+        for(int j=0;j<getLength(shingles);j++){
+            if(shingles[j]!=null){
+            System.out.print(shingles[j] + " " );
+            }
+        }
+            
      
         
     }
